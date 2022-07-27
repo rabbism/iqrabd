@@ -1,6 +1,7 @@
 import { queryAllByAttribute } from "@testing-library/react";
 import React, { useState } from "react";
-import Swal from "sweetalert2";
+import { toast } from 'react-toastify';
+import Card from "../Card";
 
 const SliderImage = () => {
   const [info, setInfo] = useState({});
@@ -22,6 +23,7 @@ const SliderImage = () => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("name", info.name);
+    formData.append("email", info.email);
 
     fetch("https://sleepy-depths-81993.herokuapp.com/slider", {
       method: "POST",
@@ -30,14 +32,16 @@ const SliderImage = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-
-        alert("Image Add SuccessFully");
+        toast("Image  Add Successfully!");
+        // alert("Image Add SuccessFully");
       })
       .catch((error) => {
         console.error(error);
       });
   };
+
   return (
+    <>
     <div className="w-50 m-auto mt-5">
       {/* <form onSubmit={handelSubmit}>
         <div className="mb-3">
@@ -86,7 +90,7 @@ const SliderImage = () => {
                 {/* input style start */}
                 <div className="card-style mb-30">
                   <h6 className="mb-25">Input Fields</h6>
-                  <form onSubmit={handelSubmit}>
+                  <form onSubmit={handelSubmit} >
                   <div className="input-style-1">
                     <label>Full Name</label>
                     <input
@@ -95,6 +99,16 @@ const SliderImage = () => {
                       name="name"
                       className="form-control"
                       placeholder="Enter your time"
+                    />
+                  </div>
+                  <div className="input-style-1">
+                    <label>Email</label>
+                    <input
+                      type="email"
+                      onBlur={handelBlur}
+                      name="email"
+                      className="form-control"
+                      placeholder="Enter your Email"
                     />
                   </div>
                   {/* end input */}
@@ -127,6 +141,8 @@ const SliderImage = () => {
         </div>
       </section>
     </div>
+    <Card></Card>
+    </>
   );
 };
 

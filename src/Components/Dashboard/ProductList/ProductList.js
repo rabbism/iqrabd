@@ -3,11 +3,13 @@ import Table from "./Table";
 
 const ProductList = () => {
   const [items, setItems] = useState([]);
+  
   useEffect(() => {
     fetch("https://sleepy-depths-81993.herokuapp.com/items")
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);
+ 
   return (
     // <div className="w-50 m-auto mt-5">
     //   <table class=" table table-striped">

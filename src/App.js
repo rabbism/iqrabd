@@ -60,7 +60,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/dashboard/discountOffer"
+            path="/dashboard/discount"
             element={
               <RequireAuth>
                 <DashNav></DashNav>

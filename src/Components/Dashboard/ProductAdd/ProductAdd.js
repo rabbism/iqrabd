@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import ProductList from "../ProductList/ProductList";
+import { toast } from 'react-toastify';
 
 const ProductAdd = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -18,11 +19,14 @@ const ProductAdd = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          alert("Product  Add Successfully");
+          // alert("Product  Add Successfully");
+          toast("Product  Add Successfully!");
           reset();
         }
       });
   };
+   
+  
   return (
     <>
       <div className="main-wrapper">
