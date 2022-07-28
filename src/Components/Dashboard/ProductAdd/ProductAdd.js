@@ -1,32 +1,55 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
 import ProductList from "../ProductList/ProductList";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const ProductAdd = () => {
-  const { register, handleSubmit, reset } = useForm();
-  const onSubmit = (data) => {
-    //   const savedCart = getStoredCart();
-    //   data.order = savedCart;
+  const [info, setInfo] = useState({});
+  const [file, setFile] = useState(null);
 
-    fetch("https://sleepy-depths-81993.herokuapp.com/items", {
+  const handelBlur = (e) => {
+    const newInfo = { ...info };
+    newInfo[e.target.name] = [e.target.value];
+    // console.log(newInfo);
+    setInfo(newInfo);
+  };
+  const handleFileChange = (e) => {
+    const newFile = e.target.files[0];
+    // console.log(newFile)
+    setFile(newFile);
+  };
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("name", info.name);
+    formData.append("subject", info.subject);
+    formData.append("price", info.price);
+    formData.append("publisher", info.publisher);
+    formData.append("link", info.link);
+
+    fetch("http://localhost:5000/slider", {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
+      body: formData,
     })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.insertedId) {
-          // alert("Product  Add Successfully");
-          toast("Product  Add Successfully!");
-          reset();
-        }
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        toast("Image  Add Successfully!");
+        // alert("Image Add SuccessFully");
+      })
+      .catch((error) => {
+        console.error(error);
+
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: "Please, try again",
+        });
       });
   };
-   
-  
+
   return (
     <>
       <div className="main-wrapper">
@@ -59,11 +82,12 @@ const ProductAdd = () => {
                             <div className="col-lg-12">
                               <div className="w-75 m-auto mt-5">
                                 <h2 className="text-center">Product Add</h2>
-                                <form onSubmit={handleSubmit(onSubmit)}>
+                                <form onSubmit={handelSubmit}>
                                   <div class="mb-3">
                                     <label class="form-label">Subject</label>
                                     <input
-                                      {...register("subject")}
+                                      onBlur={handelBlur}
+                                      name="subject"
                                       type="text"
                                       class="form-control"
                                       placeholder="Product subject"
@@ -76,7 +100,7 @@ const ProductAdd = () => {
                                       Upload a Image
                                     </label>
                                     <input
-                                      {...register("img")}
+                                      onChange={handleFileChange}
                                       type="file"
                                       class="form-control"
                                       placeholder="Enter your image url"
@@ -88,7 +112,8 @@ const ProductAdd = () => {
                                       Product Name
                                     </label>
                                     <input
-                                      {...register("name")}
+                                      onBlur={handelBlur}
+                                      name="name"
                                       type="text"
                                       class="form-control"
                                       placeholder="Enter your product Name"
@@ -98,7 +123,8 @@ const ProductAdd = () => {
                                   <div class="mb-3">
                                     <label class="form-label">Price</label>
                                     <input
-                                      {...register("price")}
+                                      onBlur={handelBlur}
+                                      name="price"
                                       type="number"
                                       class="form-control"
                                       placeholder="Enter product price"
@@ -108,7 +134,8 @@ const ProductAdd = () => {
                                   <div class="mb-3">
                                     <label class="form-label">Publisher</label>
                                     <input
-                                      {...register("publisher")}
+                                      onBlur={handelBlur}
+                                      name="publisher"
                                       type="text"
                                       class="form-control"
                                       placeholder="Enter your Publisher name"
@@ -118,7 +145,8 @@ const ProductAdd = () => {
                                   <div class="mb-3">
                                     <label class="form-label">Link</label>
                                     <input
-                                      {...register("url")}
+                                      onBlur={handelBlur}
+                                      name="link"
                                       type="text"
                                       class="form-control"
                                       placeholder="Enter your Link"

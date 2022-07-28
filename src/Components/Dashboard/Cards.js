@@ -8,7 +8,7 @@ const Cards = (props) => {
       <div className="card-style-3 mb-30">
         <div class="card-image">
           <a href="#0">
-            <img className ="img-thumbnail" src={`data:image/jpeg;base64,${image}`} alt="" />
+            <img className ="img-thumbnail" src={`data:${image.contentType};base64,${image.img}`} alt="" />
           </a>
         </div>
         <div className="card-content">
@@ -16,10 +16,7 @@ const Cards = (props) => {
             <a href="#0">{name} </a>
           </h4>
           <p>
-            With supporting text below as a natural lead-in to additional
-            content. consectetur adipiscing elit. Integer posuere erat a ante.
-            With supporting text below as a natural lead-in to additional
-            content. consectetur adipiscing elit. Integer posuere erat a ante.
+            {email}
           </p>
           <a href="#0" className="read-more">
             Read More
