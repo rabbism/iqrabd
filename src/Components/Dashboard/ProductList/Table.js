@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const Table = (props) => {
   const { _id, name, subject, price, img } = props.item;
@@ -20,6 +20,7 @@ const Table = (props) => {
             toast("Product  Deleted!");
           }
         });
+      
     }
   };
   return (

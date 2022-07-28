@@ -2,6 +2,7 @@ import { queryAllByAttribute } from "@testing-library/react";
 import React, { useState } from "react";
 import { toast } from 'react-toastify';
 import Card from "../Card";
+import Swal from "sweetalert2";
 
 const SliderImage = () => {
   const [info, setInfo] = useState({});
@@ -10,7 +11,7 @@ const SliderImage = () => {
   const handelBlur = (e) => {
     const newInfo = { ...info };
     newInfo[e.target.name] = [e.target.value];
-    console.log(newInfo);
+    // console.log(newInfo);
     setInfo(newInfo);
   };
   const handleFileChange = (e) => {
@@ -37,6 +38,14 @@ const SliderImage = () => {
       })
       .catch((error) => {
         console.error(error);
+        
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: "Please, try again",
+          });
+      
       });
   };
 

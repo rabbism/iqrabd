@@ -14,6 +14,7 @@ import SliderImage from "./Components/Dashboard/SliderImage/SliderImage";
 import './main.css';
 import './fullcalendar.css';
 import './morris.css';
+import Profile from "./Components/Profile";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<Home />}> </Route>
         <Route path="/login" element={<Login />}> </Route> */}
-          <Route path="/login" element={<Login></Login>}></Route>
+          <Route  path="/login" element={<Login></Login>}></Route>
           <Route path="/register" element={<Register></Register>}></Route>
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/" element={<Home></Home>}></Route>
@@ -33,7 +34,7 @@ function App() {
           </RequireAuth>
           }></Route>
           <Route
-            path="/dashboard/addProduct"
+            path="/dashboard/add_product"
             element={
               <RequireAuth>
                 <DashNav></DashNav>
@@ -51,7 +52,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/dashboard/productList"
+            path="/dashboard/product_list"
             element={
               <RequireAuth>
                 <DashNav></DashNav>
@@ -65,6 +66,15 @@ function App() {
               <RequireAuth>
                 <DashNav></DashNav>
                 <DiscountTime></DiscountTime>
+              </RequireAuth>
+            }
+          ></Route>
+            <Route
+            path="/dashboard/settings"
+            element={
+              <RequireAuth>
+                <DashNav></DashNav>
+                <Profile></Profile>
               </RequireAuth>
             }
           ></Route>

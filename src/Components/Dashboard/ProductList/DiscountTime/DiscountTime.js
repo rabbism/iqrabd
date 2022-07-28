@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const DiscountTime = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -18,7 +19,13 @@ const DiscountTime = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          alert("data  Add Successfully");
+          Swal.fire({
+            icon: "success",
+            title: "Good job...",
+            text: "Your Time Successfully",
+          
+          });
+          // alert("data  Add Successfully");
           reset();
         }
       });

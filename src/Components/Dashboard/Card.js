@@ -4,34 +4,95 @@ import Cards from './Cards';
 const Card = () => {
     const [img, setImg] =useState([])
 
+    // {
 
+    //   img.map(data =><Cards key={data_id} data={data}></Cards>)
+     
+    //  }
 
     useEffect(() => {
         fetch("https://sleepy-depths-81993.herokuapp.com/slider")
-          .then((res) => res.json())
+          .then(res => res.json())
           .then((data) => setImg(data));
       }, []);
     return (
-        <div className="card-components main-wrapper">
-            
-            <div className="row">
-        <div className="col-12">
-          <div className="title mt-30 mb-30">
-            <h2>Image</h2>
+       <>
+        <section className="card-components main-wrapper">
+        <div className="container-fluid">
+          {/* ========== title-wrapper start ========== */}
+          <div className="title-wrapper pt-30">
+            <div className="row align-items-center">
+              <div className="col-md-6">
+                <div className="title mb-30">
+                  <h2>Cards</h2>
+                </div>
+              </div>
+              {/* end col */}
+              <div className="col-md-6">
+                <div className="breadcrumb-wrapper mb-30">
+                  <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                      <li className="breadcrumb-item">
+                        <a href="#0">Dashboard</a>
+                      </li>
+                      <li className="breadcrumb-item">
+                        <a href="#0">UI Components</a>
+                      </li>
+                      <li className="breadcrumb-item active" aria-current="page">
+                        Cards
+                      </li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+              {/* end col */}
+            </div>
+            {/* end row */}
           </div>
-        </div>
-        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-       
-       {
+          {/* ========== title-wrapper end ========== */}
+          {/* ========== cards-styles start ========== */}
+          <div className="cards-styles">
+            {/* end row */}
+            {/* ========= card-style-2 end ========= */}
+            {/* ========= card-style-3 start ========= */}
+            <div className="row">
+             
+              {/* end col */}
+            {
 
-        img.map(data =><Cards key={data_id} data={data}></Cards>)
-       
-       }
-        </div>
-    
+
+
+img.map(item => <Cards key={item._id} item ={item}></Cards>)
+            }
+              {/* end col */}
+              {/* <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                <div className="card-style-3 mb-30">
+                  <div className="card-content">
+                    <h4><a href="#0">Card Title here </a></h4>
+                    <p>
+                      With supporting text below as a natural lead-in to
+                      additional content. consectetur adipiscing elit. Integer
+                      posuere erat a ante. With supporting text below as a
+                      natural lead-in to additional content. consectetur
+                      adipiscing elit. Integer posuere erat a ante.
+                    </p>
+                    <a href="#0" className="read-more">Read More</a>
+                  </div>
+                </div>
+              </div> */}
+              {/* end col */}
         
-      </div>
+              {/* end col */}
+            </div>
+            {/* end row */}
+            {/* ========= card-style-3 end ========= */}
+          </div>
+          {/* ========== cards-styles end ========== */}
         </div>
+        {/* end container */}
+      </section>
+      {/* ========== card components end ========== */}
+       </>
     );
 };
 

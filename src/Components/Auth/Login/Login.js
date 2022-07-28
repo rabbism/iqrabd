@@ -5,6 +5,7 @@ import "./Login.css";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Loading/Loading";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,8 +18,16 @@ const Login = () => {
   if (error) {
     displayError = (
       <h5 className="text-danger text-center ">{error?.message}</h5>
+      
     );
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: error?.message,
+      footer: "Please, try again",
+    });
   }
+  
   if (loading) {
     return <Loading></Loading>;
   }
@@ -33,9 +42,15 @@ const Login = () => {
     const password = event.target.password.value;
 
     signInWithEmailAndPassword(email, password);
+    Swal.fire({
+      icon: "success",
+      title: "Good job...",
+      text: "Your Login Successfully",
+    
+    });
     event.target.reset();
 
-    console.log(email, password);
+    // console.log(email, password);
   };
 
   return (
@@ -69,10 +84,7 @@ const Login = () => {
               <div className="form-wrapper">
                 <h6 className="mb-15">Sign In Form</h6>
                 {displayError}
-                <p className="text-sm mb-25">
-                  Start creating the best possible user experience for you
-                  customers.
-                </p>
+                
                 <form action="#" onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col-12">
