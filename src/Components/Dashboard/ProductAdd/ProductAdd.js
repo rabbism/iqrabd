@@ -28,7 +28,7 @@ const ProductAdd = () => {
     formData.append("publisher", info.publisher);
     formData.append("link", info.link);
 
-    fetch("http://localhost:5000/slider", {
+    fetch("https://sleepy-depths-81993.herokuapp.com/items", {
       method: "POST",
       body: formData,
     })
@@ -48,7 +48,9 @@ const ProductAdd = () => {
           footer: "Please, try again",
         });
       });
+      console.log(formData)
   };
+ 
 
   return (
     <>

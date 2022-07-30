@@ -3,13 +3,13 @@ import Table from "./Table";
 
 const ProductList = () => {
   const [items, setItems] = useState([]);
-  
+
   useEffect(() => {
     fetch("https://sleepy-depths-81993.herokuapp.com/items")
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);
- 
+
   return (
     // <div className="w-50 m-auto mt-5">
     //   <table class=" table table-striped">
@@ -41,7 +41,6 @@ const ProductList = () => {
                   <h2>Tables</h2>
                 </div>
               </div>
-            
             </div>
             {/* end row */}
           </div>
@@ -78,13 +77,21 @@ const ProductList = () => {
                         </tr>
                         {/* end table row*/}
                       </thead>
-                      <tbody>
-                        
-                       
-                      {
-                                 items.map(item => <Table key={item._id} item={item}></Table>)
-                          }
-                      </tbody>
+                    
+                        <tbody>
+                          {items.length ===0 ? <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
+                          </div>:
+                          <>
+                          {items.map((item) => (
+                            <Table key={item._id} item={item}></Table>
+                          ))}
+                          </>
+}
+                        </tbody>
+                    
                     </table>
                     {/* end table */}
                   </div>
@@ -93,8 +100,6 @@ const ProductList = () => {
               </div>
               {/* end col */}
             </div>
-         
-           
           </div>
           {/* ========== tables-wrapper end ========== */}
         </div>

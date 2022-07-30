@@ -53,14 +53,22 @@ useEffect(()=>{
 
                     {/* content Item */}
                     <div className="content_item">
-
-                        <Grid container spacing={3} className="d_flex">
-
                         {
-                                 items.map(item => <Item key={item._id} item={item}></Item>)
-                          }
+                            items.length ===0 ? <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
+                          </div>:
+                           <Grid container spacing={3} className="d_flex">
 
-                        </Grid>
+                           {
+                                    items.map(item => <Item key={item._id} item={item}></Item>)
+                             }
+   
+                           </Grid>
+                        }
+
+                       
 
                     </div>
 
