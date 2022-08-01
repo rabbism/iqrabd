@@ -85,7 +85,7 @@ const SliderImage = () => {
             <div className="row align-items-center">
               <div className="col-md-6">
                 <div className="title mb-30">
-                  <h2>Form Elements</h2>
+                  <h2>Slider Upload</h2>
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@ const SliderImage = () => {
               <div className="col-lg-12">
                 {/* input style start */}
                 <div className="card-style mb-30">
-                  <h6 className="mb-25">Input Fields</h6>
+                 
                   <form onSubmit={handelSubmit} >
                   <div className="input-style-1">
                     <label>Full Name</label>

@@ -15,6 +15,7 @@ import './main.css';
 import './fullcalendar.css';
 import './morris.css';
 import Profile from "./Components/Profile";
+import Video from "./Components/Dashboard/Video/Video";
 
 function App() {
   return (
@@ -66,6 +67,15 @@ function App() {
               <RequireAuth>
                 <DashNav></DashNav>
                 <DiscountTime></DiscountTime>
+              </RequireAuth>
+            }
+          ></Route>
+            <Route
+            path="/dashboard/watching_video"
+            element={
+              <RequireAuth>
+                <DashNav></DashNav>
+                <Video></Video>
               </RequireAuth>
             }
           ></Route>

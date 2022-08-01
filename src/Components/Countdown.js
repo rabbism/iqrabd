@@ -10,7 +10,12 @@ console.log(typeof(date))
   useEffect(() => {
     fetch("https://sleepy-depths-81993.herokuapp.com/discount")
       .then((res) => res.json())
-      .then((data) => setDate(data[0].data));
+      .then((data) => {
+        const newData =data.length -1 ;
+        
+        setDate(data[newData].data)
+        console.log(data[newData].data)
+      });
   }, []);
 //   const newData = date[0].data;
 //   console.log(newData)

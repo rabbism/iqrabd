@@ -38,7 +38,7 @@ const ProductList = () => {
             <div className="row align-items-center">
               <div className="col-md-6">
                 <div className="title mb-30">
-                  <h2>Tables</h2>
+                  <h2>Product List</h2>
                 </div>
               </div>
             </div>
@@ -50,13 +50,16 @@ const ProductList = () => {
             <div className="row">
               <div className="col-lg-12">
                 <div className="card-style mb-30">
-                  <h6 className="mb-10">Product Table</h6>
-                  <p className="text-sm mb-20">
-                    For basic styling—light padding and only horizontal
-                    dividers—use the class table.
-                  </p>
+                  <h5 className="mb-10  text-center">Product Table</h5>
+                  
                   <div className="table-wrapper table-responsive">
                     <table className="table">
+                    {items.length ===0 ? <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
+                          </div>:<>
+                          
                       <thead>
                         <tr>
                           <th>
@@ -79,19 +82,15 @@ const ProductList = () => {
                       </thead>
                     
                         <tbody>
-                          {items.length ===0 ? <div class="d-flex justify-content-center">
-                            <div class="spinner-border" role="status">
-                              <span class="visually-hidden">Loading...</span>
-                            </div>
-                          </div>:
-                          <>
+                        
+      
                           {items.map((item) => (
                             <Table key={item._id} item={item}></Table>
                           ))}
-                          </>
+                          
+
+                        </tbody></>
 }
-                        </tbody>
-                    
                     </table>
                     {/* end table */}
                   </div>

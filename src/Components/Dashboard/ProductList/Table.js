@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const Table = (props) => {
-  const { _id, name, subject, price, img } = props.item;
+  const { _id, name, subject, price, image } = props.item;
   const [myNotes, setMyNotes] = useState([]);
 
 
-  const newPrice =parseInt(price)
-  console.log(typeof(newPrice))
+  
 
   const removeNote = (id) => {
     const decision = window.confirm("Do You Really Want To Remove?");
@@ -31,7 +30,7 @@ const Table = (props) => {
       <td className="min-width">
         <div className="lead">
           <div className="lead-image">
-            <img src={img} alt="" />
+            <img src={`data:${image.contentType};base64,${image.img}`} alt="" />
           </div>
           <div className="lead-text">
             <p>{subject}</p>

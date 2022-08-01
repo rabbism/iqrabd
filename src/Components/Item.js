@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import React, { useState } from "react";
 
 const Item = (props) => {
-  const { name, subject, img, price } = props.item;
+  const { name, subject, image, price,link } = props.item;
   const [data,setData] =useState(0);
 
   
@@ -21,7 +21,7 @@ const Item = (props) => {
         <div className="content_item_item">
           {/* img */}
           <div className="img">
-            <img src={img} alt="" />
+            <img src={`data:${image.contentType};base64,${image.img}`} alt="" />
           </div>
 
           {/* text */}
@@ -42,7 +42,7 @@ const Item = (props) => {
               <strong>প্রকাশনী :</strong> মাকতাবাতুল আযহার
             </h5>
 
-            <a href="" className="view_details">
+            <a href={link} target="_blank" className="view_details">
               View Details
             </a>
           </div>
