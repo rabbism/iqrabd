@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import {Container, Grid, } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Menubar = (props) => {
 
@@ -42,6 +43,7 @@ const Menubar = (props) => {
                   <li> <a href="" className={props.active == 'offers' && 'active'}>Offers</a> </li>
                   <li> <a href="" className={props.active == 'blog' && 'active'}>Blog</a> </li>
                   <li> <a href="" className={props.active == 'contuctUs' && 'active'}>Contact Us</a> </li>
+                  <li> <Link to="/dashboard" className={props.active == 'contuctUs' && 'active'}>Admin</Link> </li>
 
                 </ul>
 
